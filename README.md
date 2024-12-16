@@ -4,7 +4,7 @@
 
 ```shell
 OPENAI_API_KEY=sk-*******
-YAML_FILENAME=branch-name-creator.yaml
+YAML_FILENAME=name-branch.yaml
 USER_INPUT="#1 タスク作成機能"
 
 # OpenAI APIが読み取れる形に変換したうえでcurlを実行
