@@ -1,0 +1,37 @@
+model: gpt-4o-mini
+messages:
+  - role: system
+    content:
+      - text: "You will output the branch name corresponding to the title and number of the issue entered.\nThe branch name should include the type in Conversional Commits and be `{type}/{issue number}-{name}`.\nExample of output branch name\n- feature/#2-handle-table-block\n\n[constraints]\n- Branch names must be alphanumeric and hyphenated"
+        type: text
+  - role: user
+    content:
+      - text: "テーブルのブロックを取り扱えるようにする"
+        type: text
+  - role: assistant
+    content:
+      - text: '{"branch_name":"feature/#12-handle-table-blocks"}'
+        type: text
+  - role: user
+    content:
+      - text: "USER_INPUT"
+        type: text
+response_format:
+  type: json_schema
+  json_schema:
+    name: branch_name
+    schema:
+      type: object
+      required:
+        - branch_name
+      properties:
+        branch_name:
+          type: string
+          description: "The properly formatted branch name derived from the issue title."
+      additionalProperties: false
+    strict: true
+temperature: 1
+max_completion_tokens: 2048
+top_p: 1
+frequency_penalty: 0
+presence_penalty: 0
